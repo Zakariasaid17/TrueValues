@@ -1,8 +1,17 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import localfont from 'next/font/local'
 import "./globals.css";
 
-const inter = Inter({ subsets: ["latin"] });
+
+const abibas = localfont({
+  src: [
+    {
+      path: '../public/fonts/Abibas.ttf',
+      weight: '700'
+    }
+  ],
+  variable: '--font-abibas'
+})
 
 export const metadata: Metadata = {
   title: "Create Next App",
@@ -15,8 +24,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
-      <body className={inter.className}>{children}</body>
-    </html>
+    <html lang="en" className={`${abibas.variable} bg-black`}>
+    <body className="">
+      
+      <main className="relative overflow-hidden font-abibas ">
+      {children}
+      </main>
+      
+    </body>
+  </html>
   );
 }
